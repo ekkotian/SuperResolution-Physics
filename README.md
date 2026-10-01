@@ -3,6 +3,9 @@
 Code for the paper *Physics-Informed Super-Resolution for Two-Phase Multi-scale Reservoir Simulation*
 (H. Li, B. Aslam, J. Ma, Y. Wang, B. Yan).
 
+- Code: https://github.com/ekkotian/SuperResolution-Physics
+- Data: https://doi.org/10.6084/m9.figshare.34046526
+
 The framework reconstructs fine-grid (100 x 100) pressure and water-saturation fields from
 coarse-grid (20 x 20) simulation outputs, using a nine-channel physics-aware input and a
 differentiable mass balance equation (MBE) loss. Coarse-grid fidelity correction models
@@ -13,19 +16,21 @@ differentiable mass balance equation (MBE) loss. Coarse-grid fidelity correction
 ```
 sr/                     super-resolution framework (Bicubic, EDSR, RCAN, SwinIR, SR-DNN; MBE loss)
 fidelity_correction/    coarse-grid fidelity correction models (LFLR -> HFLR)
-data/                   HDF5 data sets (download from Zenodo)
+data/                   HDF5 data sets (download from Figshare)
 ```
 
 ## Installation
 
 ```bash
+git clone https://github.com/ekkotian/SuperResolution-Physics.git
+cd SuperResolution-Physics
 pip install torch --index-url https://download.pytorch.org/whl/cu121   # match your CUDA version
 pip install -r requirements.txt
 ```
 
 ## Data
 
-Download the data sets from **https://doi.org/10.5281/zenodo.XXXXXXX** into `data/`:
+Download the data sets from Figshare, **https://doi.org/10.6084/m9.figshare.34046526**, into `data/`:
 
 - `sr_coarse_20x20.h5`, `sr_fine_100x100.h5`: paired coarse/fine cases for SR training
   (the coarse file also contains the FTNO-corrected saturation `sw_pred`)
